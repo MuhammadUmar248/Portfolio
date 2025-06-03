@@ -2,19 +2,19 @@ import React from "react"
 import Image from "next/image"
 
 const skills = [
-  {name: "HTML", category: "Frontend"},
-  {name: "CSS", category: "Frontend"},
-  {name: "JavaScript", category: "Frontend"},
-  {name: "TypeScript", category: "Frontend"},
-  {name: "React", category: "Frontend"},
-  {name: "Next.js", category: "Fullstack"},
-  {name: "Node.js", category: "Backend"},
-  {name: "Python", category: "Backend"},
-  {name: "Tailwind CSS", category: "Frontend"},
-  {name: "GitHub", category: "Tools"},
-  {name: "MongoDB", category: "Database"},
-  {name: "Firebase", category: "Backend"},
-  {name: "AI Chatbots", category: "AI"},
+  {name: "HTML", },
+  {name: "CSS", },
+  {name: "JavaScript",},
+  {name: "TypeScript", },
+  {name: "React",},
+  {name: "Next.js", },
+  {name: "Node.js",},
+  {name: "Python",},
+  {name: "Tailwind CSS",},
+  {name: "GitHub", },
+  {name: "MongoDB", },
+  {name: "Firebase", },
+  {name: "AI Chatbots",},
 ]
 
 const AboutSection = () => {
@@ -98,26 +98,7 @@ const AboutSection = () => {
                   "
                 >
                   {skill.name}
-                  <span className="
-                    absolute
-                    -bottom-8
-                    left-1/2
-                    transform
-                    -translate-x-1/2
-                    bg-stone-800
-                    text-white
-                    text-xs
-                    px-2
-                    py-1
-                    rounded
-                    opacity-0
-                    group-hover:opacity-100
-                    transition-opacity
-                    duration-200
-                    whitespace-nowrap
-                  ">
-                    {skill.category}
-                  </span>
+              
                 </div>
               ))}
             </div>
