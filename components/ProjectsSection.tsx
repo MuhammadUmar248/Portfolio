@@ -39,21 +39,26 @@ const ProjectsSection = () => {
           <hr className="w-6 h-1 mx-auto my-4 bg-teal-500 border-0 rounded"/>
         </h1>
 
-        <div className="flex flex-col gap-20"> {/* Consistent gap between all projects */}
+        <div className="flex flex-col gap-20">
           {projects.map((project, idx) => (
-            <div key={idx} className="mb-0"> {/* Removed individual margin-bottom */}
+            <div key={idx} className="mb-0">
               <SlideUp offset="-150px 0px -150px 0px">
                 <div className="flex flex-col md:flex-row md:space-x-8 gap-6">
                   <div className="md:w-1/2">
-                    <Link href={project.link} className="block">
+                    <a 
+                      href={project.link} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="block"
+                    >
                       <Image
                         src={project.image}
                         alt={project.name}
                         width={800}
                         height={450}
-                        className="rounded-xl shadow-xl hover:opacity-70 object-cover h-full"
+                        className="rounded-xl shadow-xl hover:opacity-70 object-cover h-full transition-opacity duration-300"
                       />
-                    </Link>
+                    </a>
                   </div>
                   <div className="md:w-1/2">
                     <h1 className="text-3xl font-bold mb-4">{project.name}</h1>
@@ -61,18 +66,24 @@ const ProjectsSection = () => {
                       {project.description}
                     </p>
                     <div className="flex space-x-4 mt-6">
-                      <Link href={project.github} target="_blank" aria-label="GitHub">
-                        <BsGithub
-                          size={28}
-                          className="hover:-translate-y-1 transition-transform cursor-pointer"
-                        />
-                      </Link>
-                      <Link href={project.link} target="_blank" aria-label="Live Demo">
-                        <BsArrowUpRightSquare
-                          size={28}
-                          className="hover:-translate-y-1 transition-transform cursor-pointer"
-                        />
-                      </Link>
+                      <a 
+                        href={project.github} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        aria-label="GitHub"
+                        className="hover:-translate-y-1 transition-transform"
+                      >
+                        <BsGithub size={28} />
+                      </a>
+                      <a 
+                        href={project.link} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        aria-label="Live Demo"
+                        className="hover:-translate-y-1 transition-transform"
+                      >
+                        <BsArrowUpRightSquare size={28} />
+                      </a>
                     </div>
                   </div>
                 </div>
