@@ -36,7 +36,7 @@ const AboutSection = () => {
             </h2>
             <div className="text-lg space-y-6 text-gray-600 dark:text-stone-300">
               <p>
-                Hi, I'm Umar, a <span className="font-bold text-teal-500">passionate</span> and{" "}
+                Hi, I&apos;m Umar, a <span className="font-bold text-teal-500">passionate</span> and{" "}
                 <span className="font-bold text-teal-500">solution-driven</span> software engineer with{" "}
                 <span className="font-bold text-teal-500">2+ years</span> of experience crafting 
                 performant web applications and scalable software solutions.
