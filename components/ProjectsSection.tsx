@@ -39,7 +39,7 @@ const ProjectsSection = () => {
           <hr className="w-6 h-1 mx-auto my-4 bg-teal-500 border-0 rounded"/>
         </h1>
 
-        <div className="flex flex-col gap-20">
+        <div className="flex flex-col gap-20 ">
           {projects.map((project, idx) => (
             <div key={idx} className="mb-0">
               <SlideUp offset="-150px 0px -150px 0px">

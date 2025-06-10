@@ -6,9 +6,9 @@ import { Link as ScrollLink } from "react-scroll"
 const HeroSection = () => {
   const [showHeader, setShowHeader] = useState(true)
   const [lastScrollY, setLastScrollY] = useState(0)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   useEffect(() => {
-
     const handleScroll = () => {
       const currentY = window.scrollY
       setShowHeader(currentY < lastScrollY || currentY < 100)
@@ -18,6 +18,10 @@ const HeroSection = () => {
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [lastScrollY])
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen)
+  }
 
   return (
     <section
@@ -36,6 +40,7 @@ const HeroSection = () => {
               style={{
                 filter: "drop-shadow(0 15px 25px rgba(0, 0, 0, 0.25))",
                 border: "4px solid rgba(255, 255, 255, 0.1)",
+                objectPosition: "center 30%",
               }}
               priority
             />
@@ -55,21 +60,12 @@ const HeroSection = () => {
 
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center md:justify-start">
-            <a
-              href="/My CV.pdf"
-              download
-              className="text-white font-semibold px-6 py-3 bg-gradient-to-r from-teal-500 to-blue-600 rounded-md shadow hover:scale-105 transition-transform duration-200"
-            >
-              Download CV
-            </a>
-
             <ScrollLink
               to="projects"
               smooth={true}
-              duration={800} // Increased duration for smoother scroll
-              offset={-80} // Better offset for header
-              className="cursor-pointer text-teal-500 font-medium border shadow-teal-300/20 border-teal-500 px-6 py-3 rounded-md hover:bg-teal-500 hover:text-white transition"
-              // Added easing function
+              duration={800}
+              offset={-80}
+              className="cursor-pointer text-white font-semibold px-6 py-3 bg-gradient-to-r from-teal-500 to-blue-600 rounded-md shadow hover:scale-105 transition-all duration-200 flex items-center justify-center"
               spy={true}
               hashSpy={true}
               isDynamic={true}
@@ -77,25 +73,59 @@ const HeroSection = () => {
             >
               View Projects
             </ScrollLink>
+
+            <div className="relative group">
+              <button
+                onClick={toggleMenu}
+                onMouseEnter={() => setIsMenuOpen(true)}
+                onMouseLeave={() => setIsMenuOpen(false)}
+                className="text-teal-500 font-semibold border border-teal-500 px-6 py-3 rounded-md shadow hover:bg-teal-500 hover:text-white transition-all duration-200 flex items-center justify-center w-full sm:w-auto"
+              >
+                CV Options
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  className={`h-4 w-4 ml-2 transition-transform duration-200 ${isMenuOpen ? 'rotate-180' : ''}`} 
+                  fill="none" 
+                  viewBox="0 0 24 24" 
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              
+              {/* Universal Menu - works with both hover and click */}
+              <div 
+                className={`
+                  absolute left-0  w-full sm:w-[calc(100%-0.5rem)]
+                  rounded-md shadow-lg bg-white dark:bg-stone-800 
+                  ring-1 ring-black ring-opacity-5 transition-all duration-200 
+                  ${isMenuOpen ? 'scale-100' : 'scale-0'}
+                  origin-top-left z-10
+                `}
+                onMouseEnter={() => setIsMenuOpen(true)}
+                onMouseLeave={() => setIsMenuOpen(false)}
+              >
+                <div className="py-1">
+                  <a
+                    href="/My CV.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-teal-500 hover:text-white dark:hover:bg-teal-500 dark:hover:text-white rounded-md mx-1 my-1 transition-colors duration-200"
+                  >
+                    View CV
+                  </a>
+                  <a
+                    href="/My CV.pdf"
+                    download
+                    className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-teal-500 hover:text-white dark:hover:bg-teal-500 dark:hover:text-white rounded-md mx-1 my-1 transition-colors duration-200"
+                  >
+                    Download CV
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-
-      <div className="absolute bottom-6 md:bottom-10 w-full flex justify-center">
-        <ScrollLink
-          to="about"
-          smooth
-          duration={600}
-          offset={-60}
-          className="cursor-pointer group text-center"
-          spy={true}
-          hashSpy={true}
-        >
-          <div className="text-sm md:text-base text-gray-500 dark:text-gray-300">
-            Scroll to explore
-            <span className="block w-full h-1 mt-1 bg-gradient-to-r from-teal-400 to-blue-500 rounded-full group-hover:scale-x-110 transition-transform duration-300"></span>
-          </div>
-        </ScrollLink>
       </div>
     </section>
   )
